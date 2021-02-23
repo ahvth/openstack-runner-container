@@ -8,6 +8,7 @@ COPY requirements.txt .
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pyinstaller --onefile --hidden-import cmath openstack-runner.py
+RUN pwd
 
 # run stage
 
