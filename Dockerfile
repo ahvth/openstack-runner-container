@@ -17,7 +17,7 @@ RUN yum install -y python3
 RUN mkdir openstack-runner
 WORKDIR openstack-runner
 COPY --from=builder /opt/app-root/src/openstack-runner .
-RUN python -m pip install --upgrade pip
+RUN python3 -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 EXPOSE 8090/tcp
 RUN chmod +x openstack-runner.py
