@@ -1,6 +1,14 @@
 # TODO: implement logging or other feedback
 
-FROM ubuntu:latest
-RUN apt update && apt install -y git python3
+# build stage
+
+FROM registry.access.redhat.com/ubi8/python-38 AS builder
+RUN git clone https://github.com/ahvth/openstack-runner
+WORKDIR openstack-runner
+RUN pyinstaller --onefile --hidden-import cmath openstack-runner.py
+
+# run stage
+
+FROM registry.access.redhat.com/ubi8/ubi
 EXPOSE 8090/tcp
-CMD git clone https://github.com/ahvth/openstack-runner && cd openstack-runner && python3 openstack-runner.py
+CMD ./openstack-runner.py
