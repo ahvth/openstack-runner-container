@@ -12,6 +12,8 @@ RUN pyinstaller --onefile --hidden-import cmath openstack-runner.py
 # run stage
 
 FROM registry.access.redhat.com/ubi8/ubi
+RUN mkdir openstack-runner
+WORKDIR openstack-runner
+COPY --from=builder /opt/app-root/src/dist/openstack-runner .
 EXPOSE 8090/tcp
-# CMD cd openstack-runner && ./openstack-runner.py
-CMD ls
+CMD ./openstack-runner.py
