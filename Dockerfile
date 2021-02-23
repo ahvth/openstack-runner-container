@@ -17,4 +17,5 @@ RUN mkdir openstack-runner
 WORKDIR openstack-runner
 COPY --from=builder /opt/app-root/src/openstack-runner .
 EXPOSE 8090/tcp
+RUN chmod +x openstack-runner
 CMD ./openstack-runner.py
