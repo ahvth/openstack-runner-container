@@ -2,6 +2,7 @@
 
 # build stage
 
+COPY requirements.txt .
 FROM registry.access.redhat.com/ubi8/python-38 AS builder
 RUN git clone https://github.com/ahvth/openstack-runner
 WORKDIR openstack-runner
