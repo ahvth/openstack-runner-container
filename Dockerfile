@@ -14,4 +14,4 @@ RUN pyinstaller --onefile --hidden-import cmath openstack-runner.py
 FROM registry.access.redhat.com/ubi8/ubi
 EXPOSE 8090/tcp
 # CMD cd openstack-runner && ./openstack-runner.py
-CMD pwd
+CMD ls
