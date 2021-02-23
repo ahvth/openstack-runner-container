@@ -15,6 +15,6 @@ RUN pwd
 FROM registry.access.redhat.com/ubi8/ubi
 RUN mkdir openstack-runner
 WORKDIR openstack-runner
-COPY --from=builder /opt/app-root/src/dist/openstack-runner .
+COPY --from=builder /opt/app-root/src/openstack-runner .
 EXPOSE 8090/tcp
 CMD ./openstack-runner.py
