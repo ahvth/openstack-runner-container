@@ -14,7 +14,7 @@ RUN pyinstaller --onefile openstack-runner.py
 # run stage
 
 FROM registry.access.redhat.com/ubi8/ubi
-RUN yum install -y python3
+RUN yum install -y python3 virtualenv
 RUN mkdir openstack-runner
 WORKDIR openstack-runner
 COPY --from=builder /opt/app-root/src/openstack-runner .
