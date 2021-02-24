@@ -21,7 +21,7 @@ COPY --from=builder /opt/app-root/src/openstack-runner .
 RUN python3 -m pip install --upgrade pip
 RUN virtualenv venv
 RUN source venv/bin/activate
-pip install python-openstackclient python-octaviaclient
+RUN pip install python-openstackclient python-octaviaclient
 EXPOSE 8090/tcp
 RUN chmod +x openstack-runner.py
 CMD python3 openstack-runner.py
