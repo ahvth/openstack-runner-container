@@ -1,4 +1,5 @@
 # TODO: implement logging or other feedback
+# TODO: fix ModuleNotFoundError: No module named 'urllib3.packages.six' when launching openstack client
 
 # build stage
 
@@ -18,7 +19,9 @@ RUN mkdir openstack-runner
 WORKDIR openstack-runner
 COPY --from=builder /opt/app-root/src/openstack-runner .
 RUN python3 -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN virtualenv venv
+RUN source venv/bin/activate
+pip install python-openstackclient python-octaviaclient
 EXPOSE 8090/tcp
 RUN chmod +x openstack-runner.py
 CMD python3 openstack-runner.py
